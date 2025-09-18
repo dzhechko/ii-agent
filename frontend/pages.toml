@@ -1,0 +1,25 @@
+[build]
+command = "npm run build"
+destination = ".next"
+
+[build.environment]
+NODE_VERSION = "18"
+
+[functions]
+directory = "functions"
+
+[[redirects]]
+from = "/api/*"
+to = "https://your-backend-url.com/api/*"
+status = 200
+
+[[redirects]]
+from = "/ws/*" 
+to = "wss://your-backend-url.com/ws/*"
+status = 200
+
+[[headers]]
+for = "/*"
+[headers.values]
+X-Frame-Options = "DENY"
+X-Content-Type-Options = "nosniff"
